@@ -31,7 +31,15 @@ public class MyView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         float ex = event.getX(), ey = event.getY();
-        Log.d("brad", "onTouch:" + ex + ":" + ey);
+
+        if (event.getAction() == MotionEvent.ACTION_UP){
+            Log.d("brad", "Up:" + ex + ":" + ey);
+        }else if (event.getAction() == MotionEvent.ACTION_DOWN){
+            Log.d("brad", "Down:" + ex + ":" + ey);
+        }else if (event.getAction() == MotionEvent.ACTION_MOVE){
+            Log.d("brad", "Move:" + ex + ":" + ey);
+        }
+
         //super.onTouchEvent(event);
         return true;
     }

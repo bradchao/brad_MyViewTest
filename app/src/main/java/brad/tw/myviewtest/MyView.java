@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 /**
@@ -25,6 +26,14 @@ public class MyView extends View {
         public void onClick(View v) {
             Log.d("brad","onClick");
         }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        float ex = event.getX(), ey = event.getY();
+        Log.d("brad", "onTouch:" + ex + ":" + ey);
+        //super.onTouchEvent(event);
+        return true;
     }
 
     @Override

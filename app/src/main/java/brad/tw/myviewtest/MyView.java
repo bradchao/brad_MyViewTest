@@ -68,6 +68,15 @@ public class MyView extends View {
         invalidate();   // onDraw() like repaint()
     }
 
+    public void clear(){
+        lines.clear();
+        invalidate();
+    }
+    public void undo(){
+        lines.removeLast();
+        invalidate();
+    }
+
 
     @Override
     protected void onDraw(Canvas canvas) {

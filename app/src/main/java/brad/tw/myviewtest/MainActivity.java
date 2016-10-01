@@ -14,4 +14,14 @@ public class MainActivity extends AppCompatActivity {
 
         myView = (MyView)findViewById(R.id.myView);
     }
+
+    public void clearMyView(View v){
+        myView.clear();
+    }
+    public void undoMyView(View v){
+        myView.undo();
+    }
+    public void redoMyView(View v){
+
+    }
 }

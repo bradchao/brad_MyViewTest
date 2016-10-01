@@ -10,7 +10,24 @@
         android:layout_weight="4"
         android:orientation="vertical"
         >
-
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="clearMyView"
+            android:text="Clear"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="undoMyView"
+            android:text="Undo"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="redoMyView"
+            android:text="Redo"
+            />
     </LinearLayout>
     <brad.tw.myviewtest.MyView
         android:id="@+id/myView"

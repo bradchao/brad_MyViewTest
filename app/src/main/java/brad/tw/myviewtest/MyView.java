@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -14,6 +15,16 @@ public class MyView extends View {
     public MyView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setBackgroundColor(Color.YELLOW);
+
+        setOnClickListener(new MyClickListener());
+
+    }
+
+    private class MyClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            Log.d("brad","onClick");
+        }
     }
 
     @Override
@@ -24,6 +35,10 @@ public class MyView extends View {
         paint.setColor(Color.RED);
         canvas.drawCircle(100,100,40,paint);
 
-
+        paint.setStrokeWidth(4);
+        paint.setColor(Color.BLUE);
+        canvas.drawLine(0,0,200,200,paint);
     }
+
+
 }

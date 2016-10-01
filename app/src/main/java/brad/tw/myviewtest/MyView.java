@@ -9,15 +9,22 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+
 /**
  * Created by user on 2016/10/1.
  */
 public class MyView extends View {
+    private LinkedList<HashMap<String,Float>> line;
+
+
     public MyView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setBackgroundColor(Color.YELLOW);
 
         setOnClickListener(new MyClickListener());
+        line = new LinkedList<>();
 
     }
 
@@ -33,16 +40,28 @@ public class MyView extends View {
         float ex = event.getX(), ey = event.getY();
 
         if (event.getAction() == MotionEvent.ACTION_UP){
-            Log.d("brad", "Up:" + ex + ":" + ey);
         }else if (event.getAction() == MotionEvent.ACTION_DOWN){
-            Log.d("brad", "Down:" + ex + ":" + ey);
+            doDown(event);
         }else if (event.getAction() == MotionEvent.ACTION_MOVE){
-            Log.d("brad", "Move:" + ex + ":" + ey);
+            doMove(event);
         }
-
-        //super.onTouchEvent(event);
         return true;
     }
+
+    private void doDown(MotionEvent event){
+        HashMap<String,Float> point = new HashMap<>();
+        point.put("x",event.getX());
+        point.put("y",event.getY());
+        line.add(point);
+    }
+
+    private void doMove(MotionEvent event){
+        HashMap<String,Float> point = new HashMap<>();
+        point.put("x",event.getX());
+        point.put("y",event.getY());
+        line.add(point);
+    }
+
 
     @Override
     protected void onDraw(Canvas canvas) {

@@ -16,7 +16,8 @@ import java.util.LinkedList;
  * Created by user on 2016/10/1.
  */
 public class MyView extends View {
-    private LinkedList<LinkedList<HashMap<String,Float>>> lines;
+    private LinkedList<LinkedList<HashMap<String,Float>>>
+        lines, recycle;
 
     public MyView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -24,6 +25,7 @@ public class MyView extends View {
 
         setOnClickListener(new MyClickListener());
         lines = new LinkedList<>();
+        recycle = new LinkedList<>();
 
     }
 
@@ -48,6 +50,8 @@ public class MyView extends View {
     }
 
     private void doDown(MotionEvent event){
+        recycle.clear();
+
         LinkedList<HashMap<String,Float>> line = new LinkedList<>();
         lines.add(line);
 
@@ -73,8 +77,16 @@ public class MyView extends View {
         invalidate();
     }
     public void undo(){
-        lines.removeLast();
-        invalidate();
+        if (lines.size()>0) {
+            recycle.add(lines.removeLast());
+            invalidate();
+        }
+    }
+    public void redo(){
+        if (recycle.size()>0) {
+            lines.add(recycle.removeLast());
+            invalidate();
+        }
     }
 
 

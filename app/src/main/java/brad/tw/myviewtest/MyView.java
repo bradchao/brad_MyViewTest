@@ -60,6 +60,8 @@ public class MyView extends View {
         point.put("x",event.getX());
         point.put("y",event.getY());
         line.add(point);
+
+        invalidate();   // onDraw() like repaint()
     }
 
 
@@ -68,12 +70,15 @@ public class MyView extends View {
         super.onDraw(canvas);
 
         Paint paint = new Paint();
-        paint.setColor(Color.RED);
-        canvas.drawCircle(100,100,40,paint);
-
         paint.setStrokeWidth(4);
         paint.setColor(Color.BLUE);
-        canvas.drawLine(0,0,200,200,paint);
+
+        for (int i=1; i<line.size(); i++){
+            HashMap<String,Float> p0 = line.get(i-1);
+            HashMap<String,Float> p1 = line.get(i);
+            canvas.drawLine(p0.get("x"),p0.get("y"),
+                        p1.get("x"),p1.get("y"),paint);
+        }
     }
 
 

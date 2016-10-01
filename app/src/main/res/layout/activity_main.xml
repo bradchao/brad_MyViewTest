@@ -12,10 +12,10 @@
         >
 
     </LinearLayout>
-    <TextView
+    <brad.tw.myviewtest.MyView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="#ff0"
-        android:text="Hello World!" />
+        />
 </LinearLayout>
